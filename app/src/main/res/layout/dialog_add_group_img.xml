@@ -51,7 +51,6 @@
             android:text="Add"
             android:id="@+id/btn_add"
             android:gravity="center_vertical|center_horizontal"
-            android:layout_below="@+id/text_dialog"
             android:layout_marginBottom="20dp"
             android:layout_centerHorizontal="true"
             android:textAllCaps="false"
@@ -67,7 +66,6 @@
             android:textAllCaps="false"
             android:id="@+id/btn_del"
             android:gravity="center_vertical|center_horizontal"
-            android:layout_below="@+id/text_dialog"
             android:layout_marginBottom="20dp"
             android:layout_centerHorizontal="true"
             android:textColor="#ffffffff" />

@@ -28,8 +28,9 @@ public class MainActivity extends AppCompatActivity {
             cardViewCamera,cardViewDownload,cardViewFunnyImage;
     private FloatingActionButton add_new_category;
     private ArrayList<String> group_name; //assumes this will have all group of image from database
-    Dialog dialog;
+    Dialog dialog,dialog_add_categores;
     View view;
+    EditText text_dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +87,26 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
+            }
+        });
+        dialog_add_categores=new Dialog(MainActivity.this);
+        dialog_add_categores.setCancelable(false);
+        dialog_add_categores.setContentView(R.layout.dialog_add_group_img);
+        dialog_add_categores.findViewById(R.id.btn_del).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog_add_categores.dismiss();
+            }
+        });
+        text_dialog=dialog_add_categores.findViewById(R.id.text_dialog);
+        dialog_add_categores.findViewById(R.id.btn_add).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog_add_categores.dismiss();
+                String group_name=text_dialog.getText().toString();
+                View view1=getLayoutInflater().inflate(R.layout.group_image, null);
+                ((TextView)view1.findViewById(R.id.txt_group_name)).setText(group_name);
+                grid_main_gallery.addView(view1);
             }
         });
     }
@@ -212,8 +233,8 @@ public class MainActivity extends AppCompatActivity {
         add_new_category.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                view=v;
-                dialog.show();
+                //view=v;
+                dialog_add_categores.show();
 
             }
         });
